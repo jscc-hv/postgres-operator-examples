@@ -21,6 +21,7 @@ spec:
       - name: repo1
         volume:
           volumeClaimSpec:
+            storageClassName: openebs-hostpath
             accessModes:
             - "ReadWriteOnce"
             resources:
