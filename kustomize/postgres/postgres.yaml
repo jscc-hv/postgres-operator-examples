@@ -3,12 +3,21 @@ kind: PostgresCluster
 metadata:
   name: hippo
 spec:
+  users:
+    - name: hippo
+      databases:
+         - hippodb
   image: 'registry.developers.crunchydata.com/crunchydata/crunchy-postgres:latest'
   postgresVersion: 14
   shutdown: false
   port: 5432
   instances:
     - name: instance1
+      replicas: 1      
+      resources:
+        limits:
+          cpu: 1.0
+          memory: 1Gi
       dataVolumeClaimSpec:
         storageClassName: openebs-hostpath
         accessModes:
