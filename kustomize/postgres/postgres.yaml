@@ -3,29 +3,27 @@ kind: PostgresCluster
 metadata:
   name: hippo
 spec:
-  image:
-    "registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-14.7-0"
+  image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-14.7-0
   postgresVersion: 14
   instances:
     - name: instance1
       dataVolumeClaimSpec:
         storageClassName: openebs-hostpath
         accessModes:
-        - "ReadWriteOnce"
+          - ReadWriteOnce
         resources:
           requests:
             storage: 5Gi
   backups:
     pgbackrest:
-      image:
-        "registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.41-4"
+      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.41-4
       repos:
-      - name: repo1
-        volume:
-          volumeClaimSpec:
-            storageClassName: openebs-hostpath
-            accessModes:
-            - "ReadWriteOnce"
-            resources:
-              requests:
-                storage: 5Gi
+        - name: repo1
+          volume:
+            volumeClaimSpec:
+              storageClassName: openebs-hostpath
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 5Gi
