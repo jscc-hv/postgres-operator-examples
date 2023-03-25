@@ -7,7 +7,7 @@ spec:
     - name: hippo
       databases:
          - hippodb
-  image: 'registry.developers.crunchydata.com/crunchydata/crunchy-postgres:latest'
+  image: 'registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-14.6-0'
   postgresVersion: 14
   shutdown: false
   port: 5432
@@ -27,7 +27,7 @@ spec:
             storage: 5Gi
   backups:
     pgbackrest:
-      image: 'registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:latest'
+      image: 'registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.41-0'
       repos:
         - name: repo1
           volume:
